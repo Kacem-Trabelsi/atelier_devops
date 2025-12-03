@@ -43,8 +43,8 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    echo 'Exécution des tests...'
-                    sh 'mvn test'
+                    echo 'Exécution des tests avec profil test (H2 en mémoire)...'
+                    sh 'mvn test -Dspring.profiles.active=test'
                 }
             }
             post {
