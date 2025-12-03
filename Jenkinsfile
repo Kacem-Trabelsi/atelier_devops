@@ -1,6 +1,11 @@
 pipeline {
     agent any
     
+    tools {
+        maven 'M2_HOME'
+        jdk 'JAVA_HOME'
+    }
+    
     // Déclenchement automatique : vérification toutes les minutes pour détecter les nouveaux commits
     triggers {
         pollSCM('* * * * *') // Polling toutes les minutes (format cron: minute heure jour mois jour-semaine)
