@@ -14,7 +14,7 @@ pipeline {
     environment {
         // Configuration Docker Registry (à adapter selon votre registre)
         DOCKER_REGISTRY = 'docker.io' // ou 'registry.example.com' pour un registre privé
-        DOCKER_IMAGE_NAME = 'kacem-trabelsi/student-management'
+        DOCKER_IMAGE_NAME = 'kacemtrabelsi/student-management'
         DOCKER_IMAGE_TAG = "${env.BUILD_NUMBER}"
     }
     
