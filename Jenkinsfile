@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'master' }
+    agent any
     
     tools {
         maven 'M2_HOME'
