@@ -16,6 +16,7 @@ pipeline {
         DOCKER_REGISTRY = 'docker.io' // ou 'registry.example.com' pour un registre privé
         DOCKER_IMAGE_NAME = 'kacemtrabelsi/student-management'
         DOCKER_IMAGE_TAG = "${env.BUILD_NUMBER}"
+        SONAR_TOKEN = credentials('sonar-token')
     }
     
     stages {
@@ -52,6 +53,17 @@ pipeline {
                     // Publier les résultats des tests
                     junit 'target/surefire-reports/*.xml'
                 }
+            }
+        }
+        
+        stage('SonarQube Analysis') {
+            steps {
+                sh """
+                mvn sonar:sonar \
+                -Dsonar.projectKey=my-project \
+                -Dsonar.host.url=http://192.168.50.4:9000 \
+                -Dsonar.login=$SONAR_TOKEN
+                """
             }
         }
         
